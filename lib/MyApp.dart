@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   double cw = 20;
   double aw = 310;
   double av = 220;
-  double fs = 40;
+  double fs = 35;
   double fz = 55;
   Color _color = Colors.black;
   List<ToDo> list = [];
