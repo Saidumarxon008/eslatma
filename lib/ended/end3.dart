@@ -120,7 +120,7 @@ class _AddState extends State<EndUch> {
                       textBox.deleteAt(widget.index!);
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (_) => const MyApp()),
+                          MaterialPageRoute(builder: (_) =>  const MyApp()),
                           (route) => false);
                     },
                     color: Colors.deepOrange[700],

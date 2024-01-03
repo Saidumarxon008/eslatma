@@ -16,11 +16,10 @@ import 'package:eslatma/contap.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
 import 'ended/end2.dart';
 import 'theme/theme.dart';
-
-class MyApp extends StatefulWidget {
+class MyApp extends StatefulWidget{
   final int? index;
 
-  const MyApp({super.key, this.index});
+  const MyApp({super.key, this.index,});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -35,6 +34,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   int selectedindex = -1;
   bool shouldCheckDefault = false;
   bool icon = false;
+  Color _color = Colors.black;
   int selectedIndex = 0;
   double textfieldwith = 220;
   double fabSize = 55;
@@ -49,7 +49,6 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   double av = 220;
   double fs = 35;
   double fz = 55;
-  Color _color = Colors.black;
   List<ToDo> list = [];
 
   @override
@@ -158,8 +157,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                 IconButton(
                   onPressed: () {
                     themeProvider.toggleThemeData();
-                    if (aicon == true) {
+                    if (aicon=true) {
                       setState(() {
+                        aicon =false;
                         aicon = false;
                       });
                     } else if (aicon == false) {

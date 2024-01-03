@@ -6,7 +6,7 @@ part of 'end.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class EndAdapter extends TypeAdapter<Endi> {
+class EndiAdapter extends TypeAdapter<Endi> {
   @override
   final int typeId = 0;
 
@@ -35,7 +35,7 @@ class EndAdapter extends TypeAdapter<Endi> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is EndAdapter &&
-              runtimeType == other.runtimeType &&
-              typeId == other.typeId;
+      other is EndiAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }

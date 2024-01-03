@@ -35,7 +35,7 @@ class ToDoAdapter extends TypeAdapter<ToDo> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is ToDoAdapter &&
-              runtimeType == other.runtimeType &&
-              typeId == other.typeId;
+      other is ToDoAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
