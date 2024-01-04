@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, file_names
+// ignore_for_file: non_constant_identifier_names, file_names, unrelated_type_equality_checks
 
 import 'dart:math';
 import 'package:eslatma/main.dart';
@@ -34,23 +34,28 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   int selectedindex = -1;
   bool shouldCheckDefault = false;
   bool icon = false;
-  Color _color = Colors.black;
+  // Color _color = Colors.black;
   int selectedIndex = 0;
-  double textfieldwith = 220;
+  double textfieldwith = 220.w;
   double fabSize = 55;
-  double conwidth = 20;
-  bool aicon = true;
+  double conwidth = 20.w;
   double FiconS = 40;
 
   double fi = 25;
   double fik = 40;
-  double cw = 20;
-  double aw = 310;
-  double av = 220;
+  double cw = 20.w;
+  double txtw = 310;
+  double txtv = 220;
   double fs = 35;
   double fz = 55;
   List<ToDo> list = [];
 
+  // @override
+  // void getPrefs()async{
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   bool isLightTheme = prefs.getBool(SPref.isLight) ?? true;
+  //   isLightTheme !=null ? SPref.isLight:SPref.isLight!=false;
+  // }
   @override
   void initState() {
     super.initState();
@@ -99,9 +104,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
         setState(() {
           _flag = true;
           FiconS = FiconS == fi ? fik : fik;
-          conwidth = cw == 1 ? cw : cw;
+          conwidth = cw == 1.w ? cw.w : cw.w;
           fabSize = fabSize == fz ? fz : fz;
-          textfieldwith = textfieldwith == av ? av : av;
+          textfieldwith = textfieldwith == txtv ? txtv : txtv;
           icon = false;
         });
       },
@@ -157,20 +162,10 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                 IconButton(
                   onPressed: () {
                     themeProvider.toggleThemeData();
-                    if (aicon=true) {
-                      setState(() {
-                        aicon =false;
-                        aicon = false;
-                      });
-                    } else if (aicon == false) {
-                      setState(() {
-                        aicon = true;
-                      });
-                    }
                   },
                   highlightColor: Colors.orangeAccent,
                   icon: Icon(
-                    (aicon == true) ? Icons.dark_mode_outlined : Feather.sun,
+                    (themeProvider.isLightTheme) ? Icons.dark_mode_outlined : Feather.sun,
                   ),
                 ),
               ],
@@ -185,7 +180,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
             child: Column(
               children: [
                 Container(
-                  height: 60,
+                  height: 60.h,
                 ),
                 const StyledDivider(
                   lineStyle: DividerLineStyle.dashed,
@@ -246,7 +241,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                           itemCount: textBox.length,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.only(top: 8, bottom: 8),
+                              padding: EdgeInsets.only(top: 8.h, bottom: 8.h),
                               child: MaterialButton(
                                 onLongPress: () {},
                                 onPressed: () {
@@ -291,7 +286,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                     } else if (direction ==
                                         SwipeDirection.startToEnd) {
                                       return Container(
-                                        height: 50,
+                                        height: 50.h,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(20),
@@ -385,16 +380,16 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                   setState(() {
                                     FiconS = FiconS == fik ? fi : fi;
                                     fabSize = fabSize == fs ? fs : fs;
-                                    conwidth = cw == cw ? 1 : 1;
+                                    conwidth = cw.w == cw.w ? 1.w : 1.w;
                                     textfieldwith =
-                                        textfieldwith == av ? aw : aw;
+                                        textfieldwith == txtv.w ? txtw.w : txtw.w;
                                     icon = true;
                                   });
                                 },
                                 onSubmitted: (value) {
                                   setState(() {
                                     textfieldwith =
-                                        textfieldwith == av ? av : av;
+                                        textfieldwith == txtv.w ? txtv.w : txtv.w;
                                     icon = false;
                                     textBox.add(
                                         textEditingController.text as ToDo);
@@ -428,11 +423,11 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                       ),
                     ),
                     AnimatedContainer(
-                      width: conwidth,
+                      width: conwidth.w,
                       duration: const Duration(milliseconds: 200),
                       child: Container(
-                        width: conwidth,
-                        height: conwidth,
+                        width: conwidth.w,
+                        height: conwidth.w,
                         color: Colors.transparent,
                       ),
                     ),
@@ -464,8 +459,8 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                               setState(() {
                                 fabSize = fabSize == fs ? fz : fz;
                                 FiconS = FiconS == fi ? fik : fik;
-                                conwidth = cw == 1 ? cw : cw;
-                                textfieldwith = textfieldwith == av ? av : av;
+                                conwidth = cw == 1.w ? cw.w : cw.w;
+                                textfieldwith = textfieldwith == txtv.w ? txtv.w : txtv.w;
                                 icon = false;
                               });
                             }

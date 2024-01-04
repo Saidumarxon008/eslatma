@@ -25,7 +25,7 @@ void main() async {
   runApp(AppStart(isLightTeme: isLightTheme,),);
 }
 class AppStart extends StatelessWidget {
-  const AppStart({super.key, required this.isLightTeme});
+   const AppStart({super.key, required this.isLightTeme});
 
   final bool isLightTeme;
 

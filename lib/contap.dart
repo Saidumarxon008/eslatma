@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:eslatma/add.dart';
 import 'package:eslatma/ended/end2.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
 
@@ -112,12 +113,32 @@ class _ContapState extends State<Contap> {
                       ),
                     ],
                   ),
-                )
+                ),
+                 const SizedBox(height: 15,),
+                 Container(
+                   decoration: BoxDecoration(
+                     color: Colors.yellow[300],
+                     borderRadius: BorderRadius.circular(15),
+                   ),
+                   child: ListTile(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => Add(
+                                index: widget.index,
+                              )));
+                   
+                    },
+                    title: const Text('Signalsiz'),
+                    trailing: const Icon(Ionicons.notifications_off),
+                                   ),
+                 )
               ],
             ),
           ),
           SizedBox(
-            height: 50,
+            height: 50.h,
             child: Row(
               children: [
                 Expanded(

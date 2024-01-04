@@ -19,6 +19,8 @@ class Add extends StatefulWidget {
 
 class _AddState extends State<Add> {
   TextEditingController textEditingController = TextEditingController();
+  late List<bool> _isOpen;
+  bool _icon=true;
 
   @override
   void initState() {
@@ -68,26 +70,69 @@ class _AddState extends State<Add> {
                           bottomRight: Radius.circular(10)),
                       color: Colors.deepOrange,
                     ),
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Icon(Fontisto.picture),
+                        const Icon(Fontisto.picture),
                         SizedBox(
-                          width: 20.0,
+                          width: 20.w,
                         ),
-                        Icon(Feather.check_circle),
+                        const Icon(Feather.check_circle),
                         SizedBox(
-                          width: 10.0,
+                          width: 10.w,
                         ),
                       ],
                     )),
               ),
+              // ExpansionPanelList(
+              //   children: [
+              //     ExpansionPanel(
+              //       headerBuilder: (BuildContext context, bool isOpen) {
+              //         return Text("Hello");
+              //       },
+              //       body: Text('Now Open'),
+              //       isExpanded: _isOpen[0]
+              //     ),
+              //     ExpansionPanel(
+              //       headerBuilder: (BuildContext context, bool isOpen) {
+              //         return Text("Hello");
+              //       },
+              //       body: Text('Now Open'),
+              //       isExpanded: _isOpen[0]
+              //     ),
+              //   ],
+              //   expansionCallback: (i, isOpen)=>setState(() {
+              //     _isOpen[i]=!isOpen;
+              //   }),
+              // ),
+              ExpansionTile(
+                title: const Text('Vaqt'),
+                onExpansionChanged: (bool expanded){
+                  if (_icon == true) {
+                    setState(() {
+                      _icon = false;
+                    });
+                  }
+                  else if (_icon == false) {
+                    setState(() {
+                      _icon = true;
+                    });
+                  }
+                },
+                trailing: Icon(_icon
+                    ? MaterialCommunityIcons.toggle_switch_off_outline
+                    : MaterialCommunityIcons.toggle_switch),
+                children: [
+                  Column(
+
+                  )
+                ],
+              )
             ],
           ),
         ),
-        const ExpansionPanelList(),
         Container(
-          height: 40,
+          height: 40.h,
           color: Colors.black,
           // decoration: BoxDecoration(
           //   gradient: RadialGradient(
@@ -101,8 +146,7 @@ class _AddState extends State<Add> {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                          builder: (_) => const MyApp()),
+                      MaterialPageRoute(builder: (_) => const MyApp()),
                       (route) => false);
                 },
                 color: Colors.deepOrange[700],
@@ -120,14 +164,14 @@ class _AddState extends State<Add> {
                     textBox.add(toDo);
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (_) =>  const MyApp()),
+                        MaterialPageRoute(builder: (_) => const MyApp()),
                         (route) => false);
                   } else {
                     ToDo toDo = ToDo(content: textEditingController.text);
                     textBox.putAt(widget.index!, toDo);
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (_) =>  const MyApp()),
+                        MaterialPageRoute(builder: (_) => const MyApp()),
                         (route) => false);
                   }
                 },
