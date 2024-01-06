@@ -19,8 +19,7 @@ class Add extends StatefulWidget {
 
 class _AddState extends State<Add> {
   TextEditingController textEditingController = TextEditingController();
-  late List<bool> _isOpen;
-  bool _icon=true;
+  bool _icon = true;
 
   @override
   void initState() {
@@ -84,36 +83,14 @@ class _AddState extends State<Add> {
                       ],
                     )),
               ),
-              // ExpansionPanelList(
-              //   children: [
-              //     ExpansionPanel(
-              //       headerBuilder: (BuildContext context, bool isOpen) {
-              //         return Text("Hello");
-              //       },
-              //       body: Text('Now Open'),
-              //       isExpanded: _isOpen[0]
-              //     ),
-              //     ExpansionPanel(
-              //       headerBuilder: (BuildContext context, bool isOpen) {
-              //         return Text("Hello");
-              //       },
-              //       body: Text('Now Open'),
-              //       isExpanded: _isOpen[0]
-              //     ),
-              //   ],
-              //   expansionCallback: (i, isOpen)=>setState(() {
-              //     _isOpen[i]=!isOpen;
-              //   }),
-              // ),
               ExpansionTile(
                 title: const Text('Vaqt'),
-                onExpansionChanged: (bool expanded){
+                onExpansionChanged: (bool expanded) {
                   if (_icon == true) {
                     setState(() {
                       _icon = false;
                     });
-                  }
-                  else if (_icon == false) {
+                  } else if (_icon == false) {
                     setState(() {
                       _icon = true;
                     });
@@ -122,9 +99,9 @@ class _AddState extends State<Add> {
                 trailing: Icon(_icon
                     ? MaterialCommunityIcons.toggle_switch_off_outline
                     : MaterialCommunityIcons.toggle_switch),
-                children: [
+                children: const [
                   Column(
-
+                    children: [],
                   )
                 ],
               )

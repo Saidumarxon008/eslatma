@@ -1,10 +1,11 @@
+import 'package:eslatma/adapter/todo.dart';
 import 'package:flutter/material.dart';
 import 'package:eslatma/add.dart';
-import 'package:eslatma/ended/end2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
 
+import 'adapter/end.dart';
 import 'main.dart';
 import 'theme/theme.dart';
 
@@ -27,6 +28,10 @@ class _ContapState extends State<Contap> {
     if (widget.index != null) {
       textEditingController =
           TextEditingController(text: textBox.getAt(widget.index!)!.content);
+      if (widget.index != null) {
+        textEditingController =
+            TextEditingController(text: endBox.getAt(widget.index!)!.end);
+      }
     }
   }
 
@@ -105,35 +110,35 @@ class _ContapState extends State<Contap> {
                                       )));
                         },
                         decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(vertical: 70),
-                          hintText: "  Yozuv",
-                          hintStyle: TextStyle(color: Colors.black)
-                        ),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(vertical: 70),
+                            hintText: "  Yozuv",
+                            hintStyle: TextStyle(color: Colors.black)),
                       ),
                     ],
                   ),
                 ),
-                 const SizedBox(height: 15,),
-                 Container(
-                   decoration: BoxDecoration(
-                     color: Colors.yellow[300],
-                     borderRadius: BorderRadius.circular(15),
-                   ),
-                   child: ListTile(
-                    onTap: (){
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.yellow[300],
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: ListTile(
+                    onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (_) => Add(
-                                index: widget.index,
-                              )));
-                   
+                                    index: widget.index,
+                                  )));
                     },
                     title: const Text('Signalsiz'),
                     trailing: const Icon(Ionicons.notifications_off),
-                                   ),
-                 )
+                  ),
+                )
               ],
             ),
           ),
@@ -144,15 +149,13 @@ class _ContapState extends State<Contap> {
                 Expanded(
                   child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => EndIkki(
-                                    index: widget.index,
-                                  )));
-                    },
+                      endBox.add(
+                          Endi(
+                          end: textEditingController.text,));
+                          },
                     child: const Column(
-                      children: [Icon(Icons.done_outline), Text("Yakunlash")],
+                      children: [Icon(Icons.done_outline),
+                        Text("Yakunlash")],
                     ),
                   ),
                 ),

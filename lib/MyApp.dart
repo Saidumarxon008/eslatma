@@ -16,10 +16,14 @@ import 'package:eslatma/contap.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
 import 'ended/end2.dart';
 import 'theme/theme.dart';
-class MyApp extends StatefulWidget{
+
+class MyApp extends StatefulWidget {
   final int? index;
 
-  const MyApp({super.key, this.index,});
+  const MyApp({
+    super.key,
+    this.index,
+  });
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -34,6 +38,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   int selectedindex = -1;
   bool shouldCheckDefault = false;
   bool icon = false;
+
   // Color _color = Colors.black;
   int selectedIndex = 0;
   double textfieldwith = 220.w;
@@ -64,6 +69,10 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
     if (widget.index != null) {
       textEditingController =
           TextEditingController(text: textBox.getAt(widget.index!)!.content);
+    }
+    if (widget.index != null) {
+      textEditingController =
+          TextEditingController(text: endBox.getAt(widget.index!)!.end);
     }
     getList();
   }
@@ -165,7 +174,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                   },
                   highlightColor: Colors.orangeAccent,
                   icon: Icon(
-                    (themeProvider.isLightTheme) ? Icons.dark_mode_outlined : Feather.sun,
+                    (themeProvider.isLightTheme)
+                        ? Icons.dark_mode_outlined
+                        : Feather.sun,
                   ),
                 ),
               ],
@@ -381,15 +392,17 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                     FiconS = FiconS == fik ? fi : fi;
                                     fabSize = fabSize == fs ? fs : fs;
                                     conwidth = cw.w == cw.w ? 1.w : 1.w;
-                                    textfieldwith =
-                                        textfieldwith == txtv.w ? txtw.w : txtw.w;
+                                    textfieldwith = textfieldwith == txtv.w
+                                        ? txtw.w
+                                        : txtw.w;
                                     icon = true;
                                   });
                                 },
                                 onSubmitted: (value) {
                                   setState(() {
-                                    textfieldwith =
-                                        textfieldwith == txtv.w ? txtv.w : txtv.w;
+                                    textfieldwith = textfieldwith == txtv.w
+                                        ? txtv.w
+                                        : txtv.w;
                                     icon = false;
                                     textBox.add(
                                         textEditingController.text as ToDo);
@@ -400,8 +413,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                 onTapOutside: (value) {
                                   FocusManager.instance.primaryFocus?.unfocus();
                                 },
-                                style: const TextStyle(
-                                ),
+                                style: const TextStyle(),
                                 cursorColor: Colors.deepOrangeAccent,
                                 decoration: InputDecoration(
                                   fillColor: Colors.black,
@@ -460,7 +472,8 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                 fabSize = fabSize == fs ? fz : fz;
                                 FiconS = FiconS == fi ? fik : fik;
                                 conwidth = cw == 1.w ? cw.w : cw.w;
-                                textfieldwith = textfieldwith == txtv.w ? txtv.w : txtv.w;
+                                textfieldwith =
+                                    textfieldwith == txtv.w ? txtv.w : txtv.w;
                                 icon = false;
                               });
                             }

@@ -2,9 +2,9 @@ import 'package:hive/hive.dart';
 
 part 'end.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 1)
 class Endi {
-  @HiveField(0)
+  @HiveField(1)
   String end;
 
   Endi({required this.end});

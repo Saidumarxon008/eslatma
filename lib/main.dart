@@ -8,7 +8,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'adapter/end.dart';
 late Box<ToDo> textBox;
+late Box<Endi> endBox;
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -22,6 +24,8 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ToDoAdapter());
   textBox = await Hive.openBox("textBox");
+  Hive.registerAdapter(EndiAdapter());
+  endBox = await Hive.openBox("endBox");
   runApp(AppStart(isLightTeme: isLightTheme,),);
 }
 class AppStart extends StatelessWidget {

@@ -4,7 +4,7 @@ part 'todo.g.dart';
 
 @HiveType(typeId: 0)
 class ToDo {
-  @HiveField(1)
+  @HiveField(0)
   String content;
 
   ToDo({required this.content});
