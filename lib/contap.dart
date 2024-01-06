@@ -152,6 +152,7 @@ class _ContapState extends State<Contap> {
                       endBox.add(
                           Endi(
                           end: textEditingController.text,));
+                      Navigator.pop(context);
                           },
                     child: const Column(
                       children: [Icon(Icons.done_outline),
