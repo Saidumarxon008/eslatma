@@ -1,3 +1,4 @@
+import 'package:eslatma/adapter/todo.dart';
 import 'package:eslatma/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:eslatma/main.dart';
@@ -17,7 +18,7 @@ class EndIkki extends StatefulWidget {
 }
 
 class _EndedState extends State<EndIkki> {
-  List bir=["iuuguygy"];
+  List bir = ["iuuguygy"];
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -25,13 +26,7 @@ class _EndedState extends State<EndIkki> {
     super.initState();
     if (widget.index != null) {
       textEditingController =
-          TextEditingController(text:
-          textBox.getAt(widget.index!)!.content);
-    }
-    if (widget.index != null) {
-      textEditingController =
-          TextEditingController(text:
-          endBox.getAt(widget.index!)!.end);
+          TextEditingController(text: endBox.getAt(widget.index!)!.end);
     }
   }
 
@@ -42,11 +37,12 @@ class _EndedState extends State<EndIkki> {
       appBar: AppBar(
         title: const Text("Eslatmalarim "),
       ),
-      body: Container(decoration: BoxDecoration(
-        gradient: RadialGradient(
-            center: const Alignment(-0.8, -0.3),
-            colors: themeProvider.themeMode().gradientColors!),
-      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+              center: const Alignment(-0.8, -0.3),
+              colors: themeProvider.themeMode().gradientColors!),
+        ),
         child: Column(
           children: [
             Expanded(
@@ -65,29 +61,33 @@ class _EndedState extends State<EndIkki> {
                               swipeThreshold: 0.1,
                               direction: SwipeDirection.horizontal,
                               onSwiped: (direction) {
-                                if (direction ==
-                                    SwipeDirection.startToEnd) {
+                                if (direction == SwipeDirection.startToEnd) {
                                   setState(() {
                                     endBox.deleteAt(index);
                                   });
                                 } else if (direction ==
                                     SwipeDirection.endToStart) {
                                   {
-
+                                    setState(() {
+                                      textBox.add(
+                                        ToDo(
+                                          content: textEditingController.text,
+                                        ),
+                                      );
+                                      endBox.deleteAt(widget.index!);
+                                    });
                                   }
                                 }
                               },
                               backgroundBuilder:
                                   (context, direction, progress) {
-                                if (direction ==
-                                    SwipeDirection.endToStart) {
+                                if (direction == SwipeDirection.endToStart) {
                                 } else if (direction ==
                                     SwipeDirection.startToEnd) {
                                   return Container(
                                     height: 50.h,
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                     alignment: Alignment.centerLeft,
                                     child: const Icon(
@@ -112,9 +112,8 @@ class _EndedState extends State<EndIkki> {
                                     children: [
                                       IconButton(
                                           onPressed: () {},
-                                          icon: const Icon(
-                                              MaterialCommunityIcons
-                                                  .checkbox_blank_circle_outline)),
+                                          icon: const Icon(MaterialCommunityIcons
+                                              .checkbox_blank_circle_outline)),
                                     ],
                                   ),
                                   MaterialButton(
@@ -122,15 +121,13 @@ class _EndedState extends State<EndIkki> {
                                     child: Container(
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                          BorderRadius.circular(30),
+                                              BorderRadius.circular(30),
                                           color: Colors.yellow),
                                       child: Expanded(
                                         child: Text(
-                                          endBox.getAt(index)?.end??
-                                              "null",
+                                          endBox.getAt(index)?.end ?? "null",
                                           textAlign: TextAlign.center,
-                                          style:
-                                          const TextStyle(fontSize: 20),
+                                          style: const TextStyle(fontSize: 20),
                                         ),
                                       ),
                                     ),

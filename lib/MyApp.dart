@@ -70,10 +70,6 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
       textEditingController =
           TextEditingController(text: textBox.getAt(widget.index!)!.content);
     }
-    if (widget.index != null) {
-      textEditingController =
-          TextEditingController(text: endBox.getAt(widget.index!)!.end);
-    }
     getList();
   }
 

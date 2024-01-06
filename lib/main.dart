@@ -1,3 +1,4 @@
+import 'package:eslatma/adapter/star.dart';
 import 'package:eslatma/theme/constant.dart';
 import 'package:eslatma/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'adapter/end.dart';
+
 late Box<ToDo> textBox;
 late Box<Endi> endBox;
+late Box<Star> starBox;
+
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -26,10 +30,17 @@ void main() async {
   textBox = await Hive.openBox("textBox");
   Hive.registerAdapter(EndiAdapter());
   endBox = await Hive.openBox("endBox");
-  runApp(AppStart(isLightTeme: isLightTheme,),);
+  Hive.registerAdapter(StarAdapter());
+  starBox = await Hive.openBox("starBox");
+  runApp(
+    AppStart(
+      isLightTeme: isLightTheme,
+    ),
+  );
 }
+
 class AppStart extends StatelessWidget {
-   const AppStart({super.key, required this.isLightTeme});
+  const AppStart({super.key, required this.isLightTeme});
 
   final bool isLightTeme;
 
@@ -37,9 +48,9 @@ class AppStart extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
       ChangeNotifierProvider(
-        create: (_) => ThemeProvider(isLightTheme: isLightTeme),),
-    ],
-        child: const HomePage());
+        create: (_) => ThemeProvider(isLightTheme: isLightTeme),
+      ),
+    ], child: const HomePage());
   }
 }
 
