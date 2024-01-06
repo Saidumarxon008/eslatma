@@ -28,10 +28,6 @@ class _ContapState extends State<Contap> {
     if (widget.index != null) {
       textEditingController =
           TextEditingController(text: textBox.getAt(widget.index!)!.content);
-      if (widget.index != null) {
-        textEditingController =
-            TextEditingController(text: endBox.getAt(widget.index!)!.end);
-      }
     }
   }
 
@@ -149,14 +145,16 @@ class _ContapState extends State<Contap> {
                 Expanded(
                   child: MaterialButton(
                     onPressed: () {
-                      endBox.add(
-                          Endi(
-                          end: textEditingController.text,));
-                      Navigator.pop(context);
-                          },
+                      setState(() {
+                        textBox.deleteAt(widget.index!);
+                        endBox.add(Endi(
+                          end: textEditingController.text,
+                        ));
+                        Navigator.pop(context);
+                      });
+                    },
                     child: const Column(
-                      children: [Icon(Icons.done_outline),
-                        Text("Yakunlash")],
+                      children: [Icon(Icons.done_outline), Text("Yakunlash")],
                     ),
                   ),
                 ),
