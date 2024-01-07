@@ -83,27 +83,31 @@ class _AddState extends State<Add> {
                       ],
                     )),
               ),
-              ExpansionTile(
-                title: const Text('Vaqt'),
-                onExpansionChanged: (bool expanded) {
-                  if (_icon == true) {
-                    setState(() {
-                      _icon = false;
-                    });
-                  } else if (_icon == false) {
-                    setState(() {
-                      _icon = true;
-                    });
-                  }
-                },
-                trailing: Icon(_icon
-                    ? MaterialCommunityIcons.toggle_switch_off_outline
-                    : MaterialCommunityIcons.toggle_switch),
-                children: const [
-                  Column(
-                    children: [],
-                  )
-                ],
+              const SizedBox(height: 40,),
+              Container(
+                color: Colors.deepOrange,
+                child: ExpansionTile(
+                  title: const Text('Vaqt'),
+                  onExpansionChanged: (bool expanded) {
+                    if (_icon == true) {
+                      setState(() {
+                        _icon = false;
+                      });
+                    } else if (_icon == false) {
+                      setState(() {
+                        _icon = true;
+                      });
+                    }
+                  },
+                  trailing: Icon(_icon
+                      ? Icons.toggle_off_outlined
+                      : Icons.toggle_on_rounded),
+                  children: const [
+                    Column(
+                      children: [],
+                    )
+                  ],
+                ),
               )
             ],
           ),
