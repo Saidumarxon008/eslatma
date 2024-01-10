@@ -1,7 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, file_names, unrelated_type_equality_checks
 
 import 'dart:math';
+import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:eslatma/main.dart';
+import 'package:eslatma/star.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ import 'package:eslatma/contap.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
 import 'ended/end2.dart';
 import 'theme/theme.dart';
+import 'adapter/end.dart';
 
 class MyApp extends StatefulWidget {
   final int? index;
@@ -107,6 +110,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
       },
       onTap: () {
         setState(() {
+          FocusManager.instance.primaryFocus?.unfocus();
           _flag = true;
           FiconS = FiconS == fi ? fik : fik;
           conwidth = cw == 1.w ? cw.w : cw.w;
@@ -206,7 +210,10 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                 ),
                 Visibility(
                     child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const Muhim()));
+                  },
                   title: const Text("Muhim"),
                   titleAlignment: ListTileTitleAlignment.top,
                   leading: const Icon(AntDesign.staro),
@@ -250,7 +257,6 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                             return Padding(
                               padding: EdgeInsets.only(top: 8.h, bottom: 8.h),
                               child: MaterialButton(
-                                onLongPress: () {},
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -321,14 +327,12 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                         children: [
                                           IconButton(
                                               onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Add(
-                                                              index: index,
-                                                            ))).then((value) {
-                                                  setState(() {});
+                                                setState(() {
+                                                  endBox.add(Endi(
+                                                    end: textEditingController
+                                                        .text,
+                                                  ));
+                                                  textBox.deleteAt(index);
                                                 });
                                               },
                                               icon: const Icon(
@@ -336,27 +340,18 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                                       .checkbox_blank_circle_outline)),
                                         ],
                                       ),
-                                      MaterialButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const Contap()));
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              color: Colors.yellow),
-                                          child: Expanded(
-                                            child: Text(
-                                              textBox.getAt(index)?.content ??
-                                                  "null",
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  const TextStyle(fontSize: 20),
-                                            ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color: Colors.yellow),
+                                        child: Expanded(
+                                          child: Text(
+                                            textBox.getAt(index)?.content ??
+                                                "null",
+                                            textAlign: TextAlign.center,
+                                            style:
+                                                const TextStyle(fontSize: 20),
                                           ),
                                         ),
                                       ),
@@ -380,49 +375,52 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                         child: Stack(
                           children: [
                             Positioned.fill(
-                              child: TextField(
-                                textAlignVertical: TextAlignVertical.bottom,
-                                controller: textEditingController,
-                                onTap: () {
-                                  setState(() {
-                                    FiconS = FiconS == fik ? fi : fi;
-                                    fabSize = fabSize == fs ? fs : fs;
-                                    conwidth = cw.w == cw.w ? 1.w : 1.w;
-                                    textfieldwith = textfieldwith == txtv.w
-                                        ? txtw.w
-                                        : txtw.w;
-                                    icon = true;
-                                  });
-                                },
-                                onSubmitted: (value) {
-                                  setState(() {
-                                    textfieldwith = textfieldwith == txtv.w
-                                        ? txtv.w
-                                        : txtv.w;
-                                    icon = false;
-                                    textBox.add(
-                                        textEditingController.text as ToDo);
-                                    textEditingController.clear();
-                                  });
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                onTapOutside: (value) {
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                style: const TextStyle(),
-                                cursorColor: Colors.deepOrangeAccent,
-                                decoration: InputDecoration(
-                                  fillColor: Colors.black,
-                                  hintStyle: const TextStyle(
-                                    color: Colors.deepOrangeAccent,
-                                  ),
-                                  filled: true,
-                                  border: const OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(200),
+                              child: Expanded(
+                                child: AutoSizeTextField(
+                                  fullwidth: false,
+                                  maxLines: 1,
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                  controller: textEditingController,
+                                  onTap: () {
+                                    setState(() {
+                                      FiconS = FiconS == fik ? fi : fi;
+                                      fabSize = fabSize == fs ? fs : fs;
+                                      conwidth = cw.w == cw.w ? 1.w : 1.w;
+                                      textfieldwith = textfieldwith == txtv.w
+                                          ? txtw.w
+                                          : txtw.w;
+                                      icon = true;
+                                    });
+                                  },
+                                  onSubmitted: (value) {
+                                    setState(() {
+                                      textfieldwith = textfieldwith == txtv.w
+                                          ? txtv.w
+                                          : txtv.w;
+                                      icon = false;
+                                      textBox.add(
+                                          textEditingController.text as ToDo);
+                                      textEditingController.clear();
+                                    });
+                                    FocusManager.instance.primaryFocus?.unfocus();
+                                  },
+                                  style:
+                                      const TextStyle(color: Colors.deepOrange),
+                                  cursorColor: Colors.deepOrangeAccent,
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    fillColor: Colors.black,
+                                    hintStyle: const TextStyle(
+                                      color: Colors.deepOrangeAccent,
                                     ),
+                                    filled: true,
+                                    border: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(200),
+                                      ),
+                                    ),
+                                    hintText: randomHintText,
                                   ),
-                                  hintText: randomHintText,
                                 ),
                               ),
                             ),

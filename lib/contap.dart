@@ -1,3 +1,4 @@
+import 'package:eslatma/adapter/star.dart';
 import 'package:flutter/material.dart';
 import 'package:eslatma/add.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,6 +75,10 @@ class _ContapState extends State<Contap> {
                               onPressed: () {
                                 if (_icon == true) {
                                   setState(() {
+                                    starBox.add(Star(
+                                      star: textEditingController
+                                          .text,
+                                    ));
                                     _icon = false;
                                   });
                                 } else {

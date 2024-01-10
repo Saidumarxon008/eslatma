@@ -18,7 +18,6 @@ class EndIkki extends StatefulWidget {
 }
 
 class _EndedState extends State<EndIkki> {
-  List bir = ["iuuguygy"];
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -108,27 +107,16 @@ class _EndedState extends State<EndIkki> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(MaterialCommunityIcons
-                                              .checkbox_blank_circle_outline)),
-                                    ],
-                                  ),
-                                  MaterialButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                          color: Colors.yellow),
-                                      child: Expanded(
-                                        child: Text(
-                                          endBox.getAt(index)?.end ?? "null",
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(fontSize: 20),
-                                        ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(30),
+                                        color: Colors.yellow),
+                                    child: Expanded(
+                                      child: Text(
+                                        endBox.getAt(index)?.end ?? "null",
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(fontSize: 20),
                                       ),
                                     ),
                                   ),
