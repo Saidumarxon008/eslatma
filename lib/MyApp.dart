@@ -38,17 +38,16 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   final GlobalKey<SliderDrawerState> _key = GlobalKey<SliderDrawerState>();
   TextEditingController textEditingController = TextEditingController();
   bool shouldCheck = false;
-  int selectedindex = -1;
   bool shouldCheckDefault = false;
   bool icon = false;
 
-  // Color _color = Colors.black;
+  int selectedindex = -1;
   int selectedIndex = 0;
+
   double textfieldwith = 220.w;
   double fabSize = 55;
   double conwidth = 20.w;
   double FiconS = 40;
-
   double fi = 25;
   double fik = 40;
   double cw = 20.w;
@@ -58,12 +57,6 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   double fz = 55;
   List<ToDo> list = [];
 
-  // @override
-  // void getPrefs()async{
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   bool isLightTheme = prefs.getBool(SPref.isLight) ?? true;
-  //   isLightTheme !=null ? SPref.isLight:SPref.isLight!=false;
-  // }
   @override
   void initState() {
     super.initState();
@@ -123,9 +116,10 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
         body: SliderDrawer(
           key: _key,
           sliderOpenSize: 210,
-          splashColor: Colors.amber,
+          splashColor: Colors.deepOrange,
           appBar: SliderAppBar(
-            appBarColor: Colors.deepOrange,
+            appBarColor:
+                (themeProvider.isLightTheme) ? Colors.black : Colors.deepOrange,
             drawerIcon: AnimatedIconButton(
               onPressed: () {
                 if (_flag) {
@@ -142,16 +136,31 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                 _flag = !_flag;
               },
               icons: const <AnimatedIconItem>[
-                AnimatedIconItem(icon: Icon(MaterialCommunityIcons.hamburger)),
-                AnimatedIconItem(icon: Icon(MaterialCommunityIcons.hamburger)),
+                AnimatedIconItem(
+                    icon: Icon(
+                  MaterialCommunityIcons.hamburger,
+                  // color: (themeProvider.isLightTheme)
+                  //     ? Colors.deepOrangeAccent
+                  //     : Colors.black,
+                )),
+                AnimatedIconItem(
+                    icon: Icon(
+                  MaterialCommunityIcons.hamburger,
+                  // color: (themeProvider.isLightTheme)
+                  //     ? Colors.deepOrangeAccent
+                  //     : Colors.black,
+                )),
               ],
             ),
-            title: const Row(
+            title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   'Barchasi',
                   style: TextStyle(
+                    color: (themeProvider.isLightTheme)
+                        ? Colors.white
+                        : Colors.black,
                     fontWeight: FontWeight.w800,
                     fontSize: 20,
                   ),
@@ -165,15 +174,21 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                     onPressed: () {
                       //showSearch
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.search,
+                      color: (themeProvider.isLightTheme)
+                          ? Colors.deepOrangeAccent
+                          : Colors.black,
                     )),
                 IconButton(
                   onPressed: () {
                     themeProvider.toggleThemeData();
                   },
-                  highlightColor: Colors.orangeAccent,
+                  highlightColor: Colors.deepOrange,
                   icon: Icon(
+                    color: (themeProvider.isLightTheme)
+                        ? Colors.deepOrangeAccent
+                        : Colors.black,
                     (themeProvider.isLightTheme)
                         ? Icons.dark_mode_outlined
                         : Feather.sun,
@@ -203,10 +218,13 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                       _flag = true;
                     });
                   },
-                  title: const Text('Barchasi'),
-                  leading: const Icon(
-                    MaterialCommunityIcons.format_list_checkbox,
+                  title: const Text(
+                    'Barchasi',
+                    style: TextStyle(color: Colors.white),
                   ),
+                  leading: const Icon(
+                      MaterialCommunityIcons.format_list_checkbox,
+                      color: Colors.white),
                 ),
                 Visibility(
                     child: ListTile(
@@ -214,25 +232,27 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => const Muhim()));
                   },
-                  title: const Text("Muhim"),
+                  title: const Text("Muhim",
+                      style: TextStyle(color: Colors.white)),
                   titleAlignment: ListTileTitleAlignment.top,
-                  leading: const Icon(AntDesign.staro),
+                  leading: const Icon(
+                    AntDesign.staro,
+                    color: Colors.white,
+                  ),
                 )),
                 ListTile(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => const EndIkki()));
                   },
-                  title: const Text('Yakunlangan'),
-                  leading: const Icon(
-                    Icons.done_outline,
-                  ),
+                  title: const Text('Yakunlangan',
+                      style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.done_outline, color: Colors.white),
                 ),
                 const ListTile(
-                  title: Text('Keraksiz'),
-                  leading: Icon(
-                    AntDesign.delete,
-                  ),
+                  title:
+                      Text('Keraksiz', style: TextStyle(color: Colors.white)),
+                  leading: Icon(AntDesign.delete, color: Colors.white),
                 ),
               ],
             ),
@@ -269,7 +289,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                 },
                                 child: SwipeableTile(
                                   borderRadius: 20,
-                                  color: Colors.yellow,
+                                  color: (themeProvider.isLightTheme)
+                                      ? Colors.black
+                                      : Colors.amber,
                                   swipeThreshold: 0.1,
                                   direction: SwipeDirection.horizontal,
                                   onSwiped: (direction) {
@@ -301,9 +323,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                       return Container(
                                         height: 50.h,
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors.red),
                                         alignment: Alignment.centerLeft,
                                         child: const Icon(
                                           MaterialCommunityIcons.delete_sweep,
@@ -326,32 +348,42 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                       Column(
                                         children: [
                                           IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  endBox.add(Endi(
-                                                    end: textEditingController
-                                                        .text,
-                                                  ));
-                                                  textBox.deleteAt(index);
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                  MaterialCommunityIcons
-                                                      .checkbox_blank_circle_outline)),
+                                            onPressed: () {
+                                              setState(() {
+                                                endBox.add(Endi(
+                                                  end: textEditingController
+                                                      .text,
+                                                ));
+                                                textBox.deleteAt(index);
+                                              });
+                                            },
+                                            icon: const Icon(MaterialCommunityIcons
+                                                .checkbox_blank_circle_outline),
+                                            color: (themeProvider.isLightTheme)
+                                                ? Colors.white
+                                                : Colors.black,
+                                          ),
                                         ],
                                       ),
                                       Container(
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            color: Colors.yellow),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          color: (themeProvider.isLightTheme)
+                                              ? Colors.black
+                                              : Colors.amber,
+                                        ),
                                         child: Expanded(
                                           child: Text(
                                             textBox.getAt(index)?.content ??
                                                 "null",
                                             textAlign: TextAlign.center,
-                                            style:
-                                                const TextStyle(fontSize: 20),
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color:
+                                                    (themeProvider.isLightTheme)
+                                                        ? Colors.white
+                                                        : Colors.black),
                                           ),
                                         ),
                                       ),
@@ -377,6 +409,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                             Positioned.fill(
                               child: Expanded(
                                 child: AutoSizeTextField(
+                                  style:
+                                  const TextStyle(color: Colors.deepOrange),
+                                  cursorColor: Colors.deepOrangeAccent,
                                   fullwidth: false,
                                   maxLines: 1,
                                   textAlignVertical: TextAlignVertical.bottom,
@@ -402,11 +437,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                           textEditingController.text as ToDo);
                                       textEditingController.clear();
                                     });
-                                    FocusManager.instance.primaryFocus?.unfocus();
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
                                   },
-                                  style:
-                                      const TextStyle(color: Colors.deepOrange),
-                                  cursorColor: Colors.deepOrangeAccent,
                                   decoration: InputDecoration(
                                     isDense: true,
                                     fillColor: Colors.black,

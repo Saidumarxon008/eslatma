@@ -48,46 +48,77 @@ class _AddState extends State<Add> {
               TextField(
                 controller: textEditingController,
                 textAlignVertical: TextAlignVertical.center,
+                style: TextStyle(
+                    color: (themeProvider.isLightTheme)
+                        ? Colors.deepOrangeAccent
+                        : Colors.black),
                 minLines: 1,
                 maxLines: null,
                 keyboardType: TextInputType.multiline,
-                decoration: const InputDecoration(
-                  filled: true,
-                  fillColor: Colors.deepOrange,
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(vertical: 70),
-                  hintText: "  Yozuv",
-                ),
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: (themeProvider.isLightTheme)
+                        ? Colors.black
+                        : Colors.deepOrange,
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.symmetric(vertical: 70),
+                    hintText: "  Yozuv",
+                    hintStyle: TextStyle(
+                        color: (themeProvider.isLightTheme)
+                            ? Colors.deepOrangeAccent
+                            : Colors.black)),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
                     height: 30.h,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10)),
-                      color: Colors.deepOrange,
+                      color: (themeProvider.isLightTheme)
+                          ? Colors.black
+                          : Colors.deepOrange,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const Icon(Fontisto.picture),
+                        Icon(
+                          Fontisto.picture,
+                          color: (themeProvider.isLightTheme)
+                              ? Colors.deepOrangeAccent
+                              : Colors.black,
+                        ),
                         SizedBox(
                           width: 20.w,
                         ),
-                        const Icon(Feather.check_circle),
+                        Icon(
+                          Feather.check_circle,
+                          color: (themeProvider.isLightTheme)
+                              ? Colors.deepOrangeAccent
+                              : Colors.black,
+                        ),
                         SizedBox(
                           width: 10.w,
                         ),
                       ],
                     )),
               ),
-              const SizedBox(height: 40,),
+              const SizedBox(
+                height: 40,
+              ),
               Container(
-                color: Colors.deepOrange,
+                color: (themeProvider.isLightTheme)
+                    ? Colors.black
+                    : Colors.deepOrange,
                 child: ExpansionTile(
-                  title: const Text('Vaqt'),
+                  title: Text(
+                    'Vaqt',
+                    style: TextStyle(
+                        color: (themeProvider.isLightTheme)
+                            ? Colors.deepOrangeAccent
+                            : Colors.black),
+                  ),
                   onExpansionChanged: (bool expanded) {
                     if (_icon == true) {
                       setState(() {
@@ -99,9 +130,12 @@ class _AddState extends State<Add> {
                       });
                     }
                   },
-                  trailing: Icon(_icon
-                      ? Icons.toggle_off_outlined
-                      : Icons.toggle_on_rounded),
+                  trailing: Icon(
+                    _icon ? Icons.toggle_off_outlined : Icons.toggle_on_rounded,
+                    color: (themeProvider.isLightTheme)
+                        ? Colors.deepOrangeAccent
+                        : Colors.black,
+                  ),
                   children: const [
                     Column(
                       children: [],

@@ -58,9 +58,10 @@ class _MuhimState extends State<Muhim> with TickerProviderStateMixin {
         body: SliderDrawer(
           key: _key,
           sliderOpenSize: 210,
-          splashColor: Colors.amber,
+          splashColor: Colors.deepOrangeAccent,
           appBar: SliderAppBar(
-            appBarColor: Colors.deepOrange,
+            appBarColor:
+                (themeProvider.isLightTheme) ? Colors.black : Colors.deepOrange,
             drawerIcon: AnimatedIconButton(
               onPressed: () {
                 if (_flag) {
@@ -81,8 +82,19 @@ class _MuhimState extends State<Muhim> with TickerProviderStateMixin {
                 AnimatedIconItem(icon: Icon(MaterialCommunityIcons.hamburger)),
               ],
             ),
-            title: const Text('Muhim'),
-            trailing: const Icon(Icons.add),
+            title: Text(
+              'Muhim',
+              style: TextStyle(
+                  color: (themeProvider.isLightTheme)
+                      ? Colors.deepOrangeAccent
+                      : Colors.black),
+            ),
+            trailing: Icon(
+              Icons.add,
+              color: (themeProvider.isLightTheme)
+                  ? Colors.deepOrangeAccent
+                  : Colors.black,
+            ),
           ),
           slider: Container(
             decoration: BoxDecoration(
@@ -106,7 +118,7 @@ class _MuhimState extends State<Muhim> with TickerProviderStateMixin {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(builder: (_) => const MyApp()),
-                              (route) => false);
+                          (route) => false);
                     });
                   },
                   title: const Text('Barchasi'),

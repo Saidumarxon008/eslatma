@@ -11,6 +11,7 @@ class AppColors{
   static Color? darkgrey = Colors.grey[800];
   static const Color deeporange = Colors.deepOrangeAccent;
   static const Color green = Colors.green;
+  static const Color deeporangeaccent = Colors.deepOrangeAccent;
 }
 class SPref {
   static const String isLight = "isLight";

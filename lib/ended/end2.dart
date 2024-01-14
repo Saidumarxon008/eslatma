@@ -34,7 +34,15 @@ class _EndedState extends State<EndIkki> {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Eslatmalarim "),
+        backgroundColor:
+            (themeProvider.isLightTheme) ? Colors.black : Colors.deepOrange,
+        title: Text(
+          "Eslatmalarim ",
+          style: TextStyle(
+              color: (themeProvider.isLightTheme)
+                  ? Colors.deepOrangeAccent
+                  : Colors.black),
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -56,7 +64,9 @@ class _EndedState extends State<EndIkki> {
                             padding: EdgeInsets.only(top: 8.h, bottom: 8.h),
                             child: SwipeableTile(
                               borderRadius: 20,
-                              color: Colors.yellow,
+                              color: (themeProvider.isLightTheme)
+                                  ? Colors.black
+                                  : Colors.amber,
                               swipeThreshold: 0.1,
                               direction: SwipeDirection.horizontal,
                               onSwiped: (direction) {
@@ -86,8 +96,8 @@ class _EndedState extends State<EndIkki> {
                                   return Container(
                                     height: 50.h,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors.red),
                                     alignment: Alignment.centerLeft,
                                     child: const Icon(
                                       MaterialCommunityIcons.delete_sweep,
@@ -109,14 +119,17 @@ class _EndedState extends State<EndIkki> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(30),
                                         color: Colors.yellow),
                                     child: Expanded(
                                       child: Text(
                                         endBox.getAt(index)?.end ?? "null",
                                         textAlign: TextAlign.center,
-                                        style: const TextStyle(fontSize: 20),
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: (themeProvider.isLightTheme)
+                                                ? Colors.deepOrangeAccent
+                                                : Colors.black),
                                       ),
                                     ),
                                   ),

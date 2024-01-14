@@ -61,7 +61,7 @@ class ThemeProvider with ChangeNotifier {
         ),
       ),
       iconTheme: IconThemeData(
-          color: isLightTheme ? AppColors.black : AppColors.white),
+          color: isLightTheme ? AppColors.deeporangeaccent : AppColors.black),
       dividerTheme: DividerThemeData(
           color: isLightTheme ? AppColors.black : AppColors.orange),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
