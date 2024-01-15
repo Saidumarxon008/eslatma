@@ -47,28 +47,35 @@ class ThemeProvider with ChangeNotifier {
 
   ThemeData themeData() {
     return ThemeData(
-      brightness: isLightTheme ? Brightness.light : Brightness.dark,
-      scaffoldBackgroundColor:
-          isLightTheme ? Colors.deepOrangeAccent : Colors.black,
-      textTheme: TextTheme(
-        displayLarge: GoogleFonts.stickNoBills(
-            fontSize: 70,
-            fontWeight: FontWeight.w600,
-            color: isLightTheme ? AppColors.black : AppColors.orange),
-        displayMedium: GoogleFonts.robotoCondensed(
-          fontWeight: FontWeight.w500,
-          color: isLightTheme ? AppColors.black : AppColors.orange,
+        useMaterial3: true,
+        iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+              iconColor: MaterialStateProperty.all(
+                  isLightTheme ? Colors.deepOrange : Colors.black)),
         ),
-      ),
-      iconTheme: IconThemeData(
-          color: isLightTheme ? AppColors.deeporangeaccent : AppColors.black),
-      dividerTheme: DividerThemeData(
-          color: isLightTheme ? AppColors.black : AppColors.orange),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: isLightTheme ? AppColors.black : Colors.deepOrange[700],
-      ),
-      appBarTheme: AppBarTheme(color: isLightTheme? Colors.deepOrange:Colors.black)
-    );
+        brightness: isLightTheme ? Brightness.light : Brightness.dark,
+        scaffoldBackgroundColor:
+            isLightTheme ? Colors.deepOrangeAccent : Colors.black,
+        textTheme: TextTheme(
+          displayLarge: GoogleFonts.stickNoBills(
+              fontSize: 70,
+              fontWeight: FontWeight.w600,
+              color: isLightTheme ? AppColors.black : AppColors.orange),
+          displayMedium: GoogleFonts.robotoCondensed(
+            fontWeight: FontWeight.w500,
+            color: isLightTheme ? AppColors.black : AppColors.orange,
+          ),
+        ),
+        iconTheme: IconThemeData(
+            color: isLightTheme ? AppColors.deeporangeaccent : AppColors.black),
+        dividerTheme: DividerThemeData(
+            color: isLightTheme ? AppColors.black : AppColors.orange),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor:
+              isLightTheme ? AppColors.black : Colors.deepOrange[700],
+        ),
+        appBarTheme: AppBarTheme(
+            color: isLightTheme ? Colors.deepOrange : Colors.black));
   }
 
   ThemeMode themeMode() {

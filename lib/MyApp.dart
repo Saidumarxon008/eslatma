@@ -139,16 +139,10 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                 AnimatedIconItem(
                     icon: Icon(
                   MaterialCommunityIcons.hamburger,
-                  // color: (themeProvider.isLightTheme)
-                  //     ? Colors.deepOrangeAccent
-                  //     : Colors.black,
                 )),
                 AnimatedIconItem(
                     icon: Icon(
                   MaterialCommunityIcons.hamburger,
-                  // color: (themeProvider.isLightTheme)
-                  //     ? Colors.deepOrangeAccent
-                  //     : Colors.black,
                 )),
               ],
             ),
@@ -174,11 +168,8 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                     onPressed: () {
                       //showSearch
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.search,
-                      color: (themeProvider.isLightTheme)
-                          ? Colors.deepOrangeAccent
-                          : Colors.black,
                     )),
                 IconButton(
                   onPressed: () {
@@ -186,9 +177,6 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                   },
                   highlightColor: Colors.deepOrange,
                   icon: Icon(
-                    color: (themeProvider.isLightTheme)
-                        ? Colors.deepOrangeAccent
-                        : Colors.black,
                     (themeProvider.isLightTheme)
                         ? Icons.dark_mode_outlined
                         : Feather.sun,
@@ -248,11 +236,6 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                   title: const Text('Yakunlangan',
                       style: TextStyle(color: Colors.white)),
                   leading: const Icon(Icons.done_outline, color: Colors.white),
-                ),
-                const ListTile(
-                  title:
-                      Text('Keraksiz', style: TextStyle(color: Colors.white)),
-                  leading: Icon(AntDesign.delete, color: Colors.white),
                 ),
               ],
             ),
@@ -477,7 +460,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                         width: fabSize,
                         height: fabSize,
                         child: FloatingActionButton(
-                          splashColor: Colors.deepOrangeAccent,
+                          splashColor: Colors.red,
                           onPressed: () {
                             if (icon == false) {
                               Navigator.push(
